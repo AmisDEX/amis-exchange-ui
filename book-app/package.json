@@ -7,6 +7,7 @@
   "description": "Web UX for UbiTok.io book contract",
   "homepage": "https://ubitok.io/exchange/",
   "dependencies": {
+    "copy-to-clipboard": "^3.0.8",
     "eslint": "^4.4.1",
     "eslint-plugin-react": "^7.2.0",
     "immutability-helper": "^2.2.2",
@@ -20,7 +21,7 @@
     "react-notifications": "^1.4.3",
     "react-spinkit": "^3.0.0",
     "ubi-bootstrap": "file:../ubi-bootstrap",
-    "ubitok-jslib": "file:../../ubitok-jslib",
+    "ubitok-jslib": "file:../../kiwiexchange-jslib",
     "web3": "^0.20.1",
     "web3-provider-engine": "^13.2.9"
   },

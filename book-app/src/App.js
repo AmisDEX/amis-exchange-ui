@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Tab, Tabs,
   Grid, Row, Col, Table,
-  ButtonToolbar, Button, Glyphicon, 
+  ButtonToolbar, Button, Glyphicon,
   Tooltip, OverlayTrigger } from "react-bootstrap";
 
 import update from "immutability-helper";
@@ -49,8 +49,9 @@ class App extends Component {
 
     const bookInfo = UbiBooks.bookInfo[props.bookId];
     if (!bookInfo) {
-      window.location.replace("https://ubitok.io/products/");
-      return;
+      // TODO: WOuld be good to have the pairs available here as well.
+      //window.location.replace("https://ubitok.io/products/");
+      //return;
     }
     this.baseDecimals = bookInfo.base.decimals;
     this.priceRangeAdjustment = bookInfo.priceRangeAdjustment;
@@ -66,7 +67,7 @@ class App extends Component {
     this.bookBuilder = new BookBuilder(this.bridge, this.handleBookUpdate);
 
     this.priceClickEventEmitter = new EventEmitter();
-    
+
     this.state = {
 
       // current time (helps testability vs. straight new Date())
@@ -115,7 +116,7 @@ class App extends Component {
       // which payment tab the user is on
 
       "paymentTabKey": "none",
-      
+
       // payment forms
 
       "depositBase": {
@@ -150,7 +151,7 @@ class App extends Component {
 
       "paymentHistory" : [
       ],
-      
+
       // the "friendly" order book
 
       "book": {
@@ -204,7 +205,7 @@ class App extends Component {
       //    "executedBase":"50.0",
       //  }
       //
-      
+
       "marketTrades": {
       },
       "marketTradesLoaded": false,
@@ -215,7 +216,7 @@ class App extends Component {
       // how to connect to network - show, mode, manualEthAddress
 
       "bridgeSelect": this.getInitialBridgeSelect(networkInfo),
-      
+
       // pop-up to view min order size etc.
       "showBookInfo": false,
 
@@ -284,7 +285,7 @@ class App extends Component {
       manualEthAddress: manualEthAddress
     };
   }
-  
+
   handleDemoHelpHide = () => {
     this.setState((prevState, props) => {
       return { showDemoHelp: false };
@@ -302,7 +303,7 @@ class App extends Component {
       return { showBookInfo: false };
     });
   }
-  
+
   updateClock = () => {
     this.setState((prevState, props) => {
       return {
@@ -373,7 +374,7 @@ class App extends Component {
     let creationDate = UbiTokTypes.extractClientDateFromDecodedOrderId(orderId);
     return this.formatEventDate(creationDate);
   }
-  
+
   handleStatusUpdate = (error, newBridgeStatus) => {
     let oldStatus = this.lastBridgeStatus;
     if (!oldStatus.canReadBook && newBridgeStatus.canReadBook) {
@@ -499,7 +500,7 @@ class App extends Component {
       };
     });
   }
-  
+
   handleWalkMyOrdersCallback = (error, result) => {
     if (error) {
       return this.panic(error);
@@ -600,7 +601,7 @@ class App extends Component {
       };
     });
   }
-  
+
   // TODO - move to UbiTokTypes?
   fillInSendingOrder = (orderId, price, sizeBase, terms) => {
     return {
@@ -686,7 +687,7 @@ class App extends Component {
       }
     }
   }
-  
+
   handleClickMoreInfo = (orderId) => {
     this.setState((prevState, props) => {
       return {
@@ -752,7 +753,7 @@ class App extends Component {
     let pmtId = this.createPaymentEntry("Deposit " + this.state.pairInfo.cntr.symbol, amount);
     this.bridge.submitDepositCntr(amount,
       (error, result) => { this.handlePaymentCallback(pmtId, error, result); });
-  }  
+  }
 
   handleWithdrawCntrRequest = (amount) => {
     let pmtId = this.createPaymentEntry("Withdraw " + this.state.pairInfo.cntr.symbol, amount);
@@ -827,7 +828,7 @@ class App extends Component {
       <Tooltip id="tooltip">{text}</Tooltip>
     );
   }
-  
+
   // TODO - don't like this, rework nav to just use plain old links
   handleTopNavSelect = (key) => {
     if (key === "Home") {
@@ -869,7 +870,7 @@ class App extends Component {
       this.warn(e);
     }
   }
-  
+
   handleManualTransactionRequest = (goalDesc, appearDesc, fromAddress, toAddress, amountToSend, gasLimit, data, callback) => {
     this.manualTxnRequestCallback = callback;
     this.setState((prevState, props) => {
@@ -924,7 +925,7 @@ class App extends Component {
           { (this.state.pairInfo.liveness === "TEST") ? (
             <img src={TestLogo} className="App-logo" alt="TEST" />
           ) : undefined }
-          <img src={UbiLogo} className="App-logo" alt="UbiTok.io" />- the unstoppable Ethereum token exchange
+          <img src={UbiLogo} className="App-logo" alt="KIWI Exchnage" />- the official exchange for trading the KIWI token
         </div>
         <Grid>
           <Row>
@@ -1120,7 +1121,7 @@ class App extends Component {
                         <Glyphicon glyph="remove" title="close" />
                       </Button>
                     </p>
-                    <Withdraw 
+                    <Withdraw
                       symbol={this.state.pairInfo.base.symbol}
                       decimals={this.state.pairInfo.base.decimals}
                       chosenAccount={this.state.bridgeStatus.chosenAccount}
@@ -1134,7 +1135,7 @@ class App extends Component {
                         <Glyphicon glyph="remove" title="close" />
                       </Button>
                     </p>
-                    <DepositEth 
+                    <DepositEth
                       symbol={this.state.pairInfo.cntr.symbol}
                       ownAmount={this.state.balances.ownCntr}
                       chosenAccount={this.state.bridgeStatus.chosenAccount}
@@ -1148,7 +1149,7 @@ class App extends Component {
                         <Glyphicon glyph="remove" title="close" />
                       </Button>
                     </p>
-                    <Withdraw 
+                    <Withdraw
                       symbol={this.state.pairInfo.cntr.symbol}
                       decimals={this.state.pairInfo.cntr.decimals}
                       chosenAccount={this.state.bridgeStatus.chosenAccount}
@@ -1190,7 +1191,7 @@ class App extends Component {
                   <CreateOrder priceClickEventEmitter={this.priceClickEventEmitter} direction="Sell" pairInfo={this.state.pairInfo} balances={this.state.balances} bridgeStatus={this.state.bridgeStatus} onPlace={this.handlePlaceOrder} />
                 </Tab>
               </Tabs>
-              
+
             </Col>
             <Col md={8}>
               <Row>
@@ -1226,7 +1227,7 @@ class App extends Component {
                             <td>{entry[2]}</td>
                           </tr>
                         )}
-                        {this.getBookPadding("asks").map((entry) => 
+                        {this.getBookPadding("asks").map((entry) =>
                           <tr key={entry[0]}>
                             <td colSpan="3">{entry[1]}&nbsp;</td>
                           </tr>
@@ -1253,7 +1254,7 @@ class App extends Component {
                             <td>{entry[2]}</td>
                           </tr>
                         )}
-                        {this.getBookPadding("bids").map((entry) => 
+                        {this.getBookPadding("bids").map((entry) =>
                           <tr key={entry[0]}>
                             <td colSpan="3">{entry[1]}&nbsp;</td>
                           </tr>
@@ -1336,7 +1337,7 @@ class App extends Component {
                   <OrderDetails
                     show={this.state.showOrderInfo}
                     onClose={this.handleOrderInfoCloseClick}
-                    myOrder={this.state.myOrders[this.state.orderInfoOrderId]} 
+                    myOrder={this.state.myOrders[this.state.orderInfoOrderId]}
                     pairInfo={this.state.pairInfo}
                     chosenSupportedNetworkName={this.state.bridgeStatus.chosenSupportedNetworkName}
                     clock={this.state.clock} />

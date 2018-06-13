@@ -30,12 +30,12 @@ class BridgeSelect extends React.Component {
   handleDone = () => {
     // TODO - yuk - ugly window.alert dialogs
     if (!this.state.selectedKey) {
-      alert("Please choose one option for connecting to Ethereum first ...");
+      alert("Please choose an option for connecting to Ethereum first ...");
       return;
     }
     let validation = this.getMyEthAddressValidationResult(true);
     if (validation[0] === "error") {
-      alert("Please fix the problem with the chosen option first:\n" + validation[1]);
+      alert("Please fix the following error:\n" + validation[1]);
       return;
     }
     this.props.onDone(this.state.selectedKey, this.state.myEthAddress.trim());
