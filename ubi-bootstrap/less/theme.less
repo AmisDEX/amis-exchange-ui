@@ -143,11 +143,12 @@
 }
 .navbar-brand,
 .navbar-nav > li > a {
-  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+  //text-shadow: 0 1px 0 rgba(255,255,255,.25);
 }
 
 // Inverted navbar
 .navbar-inverse {
+  padding: 5px;
   #gradient > .vertical(@start-color: lighten(@navbar-inverse-bg, 10%); @end-color: @navbar-inverse-bg);
   .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered; see https://github.com/twbs/bootstrap/issues/10257
   border-radius: @navbar-border-radius;

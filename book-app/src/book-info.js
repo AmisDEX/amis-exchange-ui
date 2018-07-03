@@ -64,6 +64,19 @@ class BookInfo extends React.Component {
               Careful though - never send tokens (or ether) to a token address - that's not how it works and you won't get them back.
             </Panel>
           ) : undefined }
+
+          { (this.props.pairInfo.liveness === "TEST") ? (
+            <Panel bsStyle="info">
+              <strong>This is a test token!!</strong><br/><br/>
+              You will need ROPSTEN ETH to be able to make trades. You can come some for free from the Ropsten faucet <a href="http://faucet.ropsten.be:3001/" target="_blank">here</a><br/>
+              <br/>The address of this token is:
+              <a className="tinyHex" href={"https://ropsten.etherscan.io/token/" + this.props.pairInfo.base.address} target="_blank" rel="noopener noreferrer">
+                {this.props.pairInfo.base.address}
+              </a>.<br/><br/>
+              Careful though - never send tokens (or ether) to a token address - that's not how it works and you won't get them back.
+            </Panel>
+          ) : undefined }
+
           { this.props.pairInfo.newerVersion ? (
             <Panel header="Deprecated Book Contract" bsStyle="danger">
               This book contract has been replaced by&nbsp;
@@ -81,7 +94,7 @@ class BookInfo extends React.Component {
                 <span>
                   <a href={"/exchange/?pairId=" + entry} target="_blank" rel="noopener noreferrer">
                     {entry}
-                  </a>, 
+                  </a>,
                 </span>
               )}
               you should cancel and withdraw them.

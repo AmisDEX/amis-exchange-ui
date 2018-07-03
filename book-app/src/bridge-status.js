@@ -23,7 +23,7 @@ class BridgeStatus extends React.Component {
           </Panel>
         ) : !this.props.bridgeStatus.web3Present ? (
           <Panel header="No Ethereum Connection" bsStyle="danger">
-            <p>UbiTok.io needs to connect to the Ethereum network via a local client, but could not find one.</p>
+            <p>KIWI Exchange needs to connect to the Ethereum network via a local client, but could not find one.</p>
             <p>We suggest using one of the following clients to connect to Ethereum:</p>
             <Row>
               <Col sm={6}>
@@ -42,7 +42,7 @@ class BridgeStatus extends React.Component {
           </Panel>
         ) : this.props.bridgeStatus.unsupportedNetwork ? (
           <Panel header="Unsupported Ethereum Network" bsStyle="danger">
-            <p>This UbiTok.io book is only available on the {this.props.bridgeStatus.targetNetworkName}.</p>
+            <p>This book is only available on the {this.props.bridgeStatus.targetNetworkName}.</p>
             <p>Try changing Ethereum Network in your Ethereum Client (e.g. Metamask, Mist). You might need to reload this page.</p>
           </Panel>
         ) : this.props.bridgeStatus.networkChanged ? (
@@ -53,7 +53,7 @@ class BridgeStatus extends React.Component {
           </Panel>
         ) : this.props.bridgeStatus.accountLocked && this.props.bridgeStatus.mightReadAccountOrders ? (
           <Panel header="Ethereum Account Locked" bsStyle="danger">
-            <p>UbiTok.io needs to know which Ethereum account to use.</p>
+            <p>We need to know which Ethereum account to use.</p>
             <p>Try unlocking your Ethereum Client (e.g. MetaMask, Mist). You might need to reload this page after unlocking.</p>
           </Panel>
         ) : this.props.bridgeStatus.accountChanged ? (
@@ -69,8 +69,8 @@ class BridgeStatus extends React.Component {
           </Panel>
         ) : (!this.props.bridgeStatus.canReadBook || !this.props.bridgeStatus.canReadAccountOrders) ? (
           <Panel header="Unknown Ethereum Connection Problem" bsStyle="danger">
-            <p>Some unusual problem has occurred preventing UbiTok.io connecting to the Ethereum Network.</p>
-            <p>Try reloading this page, or contact help@ubitok.io with details of the problem.</p>
+            <p>Some unusual problem has occurred preventing KIWI Exchange connecting to the Ethereum Network.</p>
+            <p>Try reloading this page, or contact help@thekiwi.online with details of the problem.</p>
           </Panel>
         ) : (this.props.ownEthBalance && new BigNumber(this.props.ownEthBalance).lt("0.005")) ? (
           <Panel header="Low Ethereum Balance" bsStyle="danger">

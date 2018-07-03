@@ -1,11 +1,11 @@
 {
   "name": "book-app",
   "version": "0.1.0",
-  "author": "Bonnag Limited",
+  "author": "Liberation Online",
   "license": "Proprietary",
   "private": true,
-  "description": "Web UX for UbiTok.io book contract",
-  "homepage": "https://ubitok.io/exchange/",
+  "description": "Web UX for KIWI Exchange book contract",
+  "homepage": "https://exchange.thekiwi.io/exchange/",
   "dependencies": {
     "copy-to-clipboard": "^3.0.8",
     "eslint": "^4.4.1",

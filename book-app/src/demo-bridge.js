@@ -19,7 +19,7 @@ class DemoBridge {
     if (targetNetworkInfo.networkId !== "demo") {
       throw new Error("demo bridge only works on demo network");
     }
-    
+
     this.bookInfo = bookInfo;
     this._baseDecimals = bookInfo.base.decimals;
     this._priceRangeAdjustment = bookInfo.priceRangeAdjustment;
@@ -36,10 +36,10 @@ class DemoBridge {
     this.rx = new ReferenceExchange();
     this.sendingQueue = [];
     this.miningQueue = [];
-    
+
     var realNow = (new Date()).getTime();
     var now = realNow - 30 * 60 * 1000;
-    
+
     this._actors = [];
     this._addActor(new DemoActorWhale(this, "0xDemoActorBuyWhale", "Buy", now));
     this._addActor(new DemoActorWhale(this, "0xDemoActorSellWhale", "Sell", now));
@@ -48,7 +48,7 @@ class DemoBridge {
     this._addActor(new DemoActorStacker(this, "0xDemoActorBuyStacker", "Buy", now));
     this._addActor(new DemoActorStacker(this, "0xDemoActorSellStacker", "Sell", now));
     this.rx.collectEvents();
-    
+
     this._rawHistoricMarketEvents = [];
     while (now < realNow) {
       this._advanceActorsAt(now);
@@ -60,7 +60,7 @@ class DemoBridge {
       return this._translateMarketOrderEvent(me);
     });
     this._rawHistoricMarketEvents = undefined;
-    
+
     // give user some play money
     this.rx.setBalancesForTesting(this.chosenAccount,
       UbiTokTypes.encodeBaseAmount("1000", this._baseDecimals),
@@ -94,7 +94,7 @@ class DemoBridge {
       throw delayedError;
     }
   }
-  
+
   _processMiningQueue = (maybeBlockDate) => {
     this.blockNumber++;
     this.blockDate = maybeBlockDate ? maybeBlockDate : new Date();
@@ -260,7 +260,7 @@ class DemoBridge {
     return true;
   }
   /* eslint-enable no-unused-vars */
-  
+
   // Request callbacks with client's balances (if available).
   // Callback fn should take (error, result) where result is an object
   // containing zero or more of the following formatted balances:
@@ -338,7 +338,7 @@ class DemoBridge {
       this.rx.withdrawCntr(this.chosenAccount, UbiTokTypes.encodeCntrAmount(fmtAmount));
     }, {gas: gasAmount}, callback);
   }
-  
+
   // Submit a reward deposit approval for given friendly reward amount.
   // Callback fn should take (error, event) - see TransactionWatcher.
   // Returns nothing useful.
@@ -368,7 +368,7 @@ class DemoBridge {
       this.rx.transferRwrd(this.chosenAccount, UbiTokTypes.encodeRwrdAmount(fmtAmount));
     }, {gas: gasAmount}, callback);
   }
-  
+
   // Used to build a snapshot of the order book.
   // Thin wrapper over the contract walkBook - it's quite hard to explain (TODO)
   // Returns nothing useful.
@@ -407,7 +407,7 @@ class DemoBridge {
       ]);
     });
   }
-  
+
   // Submit a request to create an order.
   // Callback fn should take (error, event) - see TransactionWatcher.
   // Returns nothing useful.
@@ -464,7 +464,9 @@ class DemoBridge {
         rawExecutedBase: refOrder.executedBase,
         rawExecutedCntr: refOrder.executedCntr,
         rawFeesBaseOrCntr: refOrder.feesBaseOrCntr,
-        rawFeesRwrd: refOrder.feesRwrd
+        rawFeesRwrd: refOrder.feesRwrd,
+        //rawAvgPrice: refOrder.executedBase / refOrder.rawFeesBaseOrCntr,
+        rawAvgPrice: refOrder.executedCntr / refOrder.executedBase,
       };
       callback(undefined, fmtOrder);
     });
@@ -487,7 +489,7 @@ class DemoBridge {
         rawExecutedBase: refOrder.executedBase,
         rawExecutedCntr: refOrder.executedCntr,
         rawFeesBaseOrCntr: refOrder.feesBaseOrCntr,
-        rawFeesRwrd: refOrder.feesRwrd
+        rawFeesRwrd: refOrder.feesRwrd,
       };
       callback(undefined, fmtOrder);
     });

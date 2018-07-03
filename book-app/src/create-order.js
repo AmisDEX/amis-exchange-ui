@@ -89,7 +89,7 @@ class CreateOrder extends React.Component {
     }
     if (this.props.direction === "Sell") {
       let availableBalance = this.props.balances.exchangeBase;
-      if (availableBalance !== "" && 
+      if (availableBalance !== "" &&
           rawAmountBase.gt(UbiTokTypes.encodeBaseAmount(availableBalance, this.getBaseDecimals()))) {
         return ["error", "Your Book Contract " + this.props.pairInfo.base.symbol +
           " balance is too low, try a smaller amount or deposit more funds"];
@@ -177,12 +177,12 @@ class CreateOrder extends React.Component {
     }
     return ["success", helpMsg, displayedProceeds];
   }
-  
+
   getCreateOrderTermsValidationResult = () => {
     // TODO - check if e.g. maker only will take, or others will have crazee number of matches?
     return ["success", undefined];
   }
-  
+
   handleCreateOrderAmountBaseChange = (e) => {
     var v = e.target.value;
     this.setState((prevState, props) => {
@@ -209,7 +209,7 @@ class CreateOrder extends React.Component {
       };
     });
   }
-  
+
   handlePlaceOrder = () => {
     let validationResult = this.getOverallValidationResult();
     if (validationResult[0] === "error") {
@@ -315,7 +315,7 @@ class CreateOrder extends React.Component {
             <SendingButton bsStyle={(this.props.direction === "Buy") ? "primary" : "warning"} onClick={this.handlePlaceOrder} text={"Place " + this.props.direction + " Order"} />
           </ButtonToolbar>
           <HelpBlock>
-            Please read our <a target="_blank" href="http://ubitok.io/trading-rules" rel="noopener noreferrer">Trading Rules</a> for help and terms.
+            Please read our <a target="_blank" href="http://exchange.thekiwi.io/trading-rules" rel="noopener noreferrer">Trading Rules</a> for help and terms.
           </HelpBlock>
         </FormGroup>
       </div>

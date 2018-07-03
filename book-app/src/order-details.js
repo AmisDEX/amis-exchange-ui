@@ -22,7 +22,7 @@ class OrderDetails extends React.Component {
   formatRwrd = (rawAmount) => {
     return UbiTokTypes.decodeRwrdAmount(rawAmount);
   }
-  
+
   chooseClassNameForPrice = (price) => {
     if (price.startsWith("Buy")) {
       return "buyPrice";
@@ -47,7 +47,7 @@ class OrderDetails extends React.Component {
     let creationDate = UbiTokTypes.extractClientDateFromDecodedOrderId(orderId);
     return this.formatEventDate(creationDate);
   }
-  
+
   render() {
     return (
       <Modal show={this.props.show} onHide={this.props.onClose}>
@@ -69,14 +69,20 @@ class OrderDetails extends React.Component {
                 <tr>
                   <td>Transaction</td>
                   <td>
-                    <EthTxnLink txnHash={this.props.myOrder.txnHash} 
+                    <EthTxnLink txnHash={this.props.myOrder.txnHash}
                       networkName={this.props.chosenSupportedNetworkName} large={true} />
                   </td>
                 </tr>
                 <tr>
-                  <td>Price</td>
+                  <td>Order Price</td>
                   <td className={this.chooseClassNameForPrice(this.props.myOrder.price)}>
                     {this.props.myOrder.price}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Average Price</td>
+                  <td className={this.chooseClassNameForPrice(this.props.myOrder.price)}>
+                    {this.props.myOrder.rawAvgPrice}
                   </td>
                 </tr>
                 <tr>

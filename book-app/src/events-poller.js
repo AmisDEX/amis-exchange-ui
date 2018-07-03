@@ -1,7 +1,7 @@
 // helper for polling for contract events
 // needed due to unreliability of filter.watch()
 class EventsPoller {
-  
+
   constructor(name) {
     this._name = name;
     this._callbacks = [];
@@ -12,10 +12,10 @@ class EventsPoller {
 
   debugLog = (msg, ...args) => {
     /* eslint-disable no-console */
-    console.log("UbiTok.io Debug", "EventsPoller", this._name, msg, ...args);
+    console.log("KIWI Exchange Debug", "EventsPoller", this._name, msg, ...args);
     /* eslint-enable no-console */
   }
-  
+
   // experimental - some versions of web3 + some metamasks on some networks
   // don't seem to deliver event.filter.get() events unless we do this early?
   /* eslint-disable no-unused-vars */

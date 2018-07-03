@@ -1,4 +1,9 @@
 # kiwiexchange-ui
 KIWI Exchange User Interface
 
-Forked from UbiTok.io which was developed by Bonnag Limited (https://bonnag.com/)
+## Making changes to theme
+install less ` npm install -g less`
+make changes to either variables.less or theme.less in ubi-boostrap
+
+
+`lessc less/theme.less dist/css/theme.css`

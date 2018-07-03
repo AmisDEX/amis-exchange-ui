@@ -38,7 +38,7 @@ class ManualTxn extends React.Component {
   }
 
   CopyOnlyFormControl = (props) =>
-    <FormControl className="copyOnlyFormControl" {...props} 
+    <FormControl className="copyOnlyFormControl" {...props}
       onChange={() => {}} onClick={() => this.handleValueClick(props.value)} />
 
   render() {
@@ -87,9 +87,9 @@ class ManualTxn extends React.Component {
               <CopyOnlyFormControl componentClass="textarea" rows="5" value={this.props.data} />
             </FormGroup>
           </form>
-          <p>Once you've sent the transaction from MyEtherWallet, your {this.props.appearDesc} should appear on UbiTok.io within a minute or so.</p>
+          <p>Once you've sent the transaction from MyEtherWallet, your {this.props.appearDesc} should appear here within a minute or so.</p>
           <p>
-            <i>Tip 2: Have you tried the MetaMask Chrome extension - it makes using UbiTok.io much easier?</i>
+            <i>Tip 2: Have you tried the MetaMask Chrome extension - it makes using KIWI Exchange much easier?</i>
           </p>
         </Modal.Body>
         <Modal.Footer>

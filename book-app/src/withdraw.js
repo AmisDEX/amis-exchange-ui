@@ -48,7 +48,7 @@ class Withdraw extends React.Component {
       this.props.onWithdraw(this.state.amount);
     }
   }
-  
+
   handleAlertDismiss = () => {
     this.setState((prevState, props) => {
       return {
@@ -56,7 +56,7 @@ class Withdraw extends React.Component {
       };
     });
   }
-  
+
   render() {
     return (
       <form>
@@ -70,6 +70,7 @@ class Withdraw extends React.Component {
             <FormControl type="text" value={this.state.amount} onChange={this.handleAmountChange}/>
             <InputGroup.Addon>{this.props.symbol}</InputGroup.Addon>
           </InputGroup>
+          <br />
           <SendingButton bsStyle="warning" onClick={this.handleWithdrawClick} text={"Withdraw " + this.props.symbol} />
           {(this.state.error === "" ? undefined : (
             <Alert bsStyle="danger" onDismiss={this.handleAlertDismiss}>

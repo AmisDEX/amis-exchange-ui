@@ -1,3 +1,3 @@
 # book-app
 
-Web front-end for UbiTok.io order book contracts
+Web front-end for KIWI Exchange order book contracts

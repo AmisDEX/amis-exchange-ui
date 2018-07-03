@@ -12,7 +12,8 @@ import Cookies from "js-cookie";
 import { NotificationContainer } from "react-notifications";
 
 import Spinner from "react-spinkit";
-import UbiLogo from "./ubitok-logo.svg";
+//import UbiLogo from "./ubitok-logo.svg";
+import KiwiLogo from "./kiwi-logo.png";
 import DemoLogo from "./demo-logo.svg";
 import TestLogo from "./test-logo.svg";
 
@@ -247,7 +248,7 @@ class App extends Component {
     this.bridge.subscribeBalance(this.handleBalanceUpdate);
     window.setInterval(this.updateClock, 1000);
     window.setInterval(this.purgeExcessData, 30000);
-    window.document.title = "UbiTok.io - " + this.state.pairInfo.symbol;
+    window.document.title = "KIWI Exchange - " + this.state.pairInfo.symbol;
   }
 
   panic = (msg) => {
@@ -256,7 +257,7 @@ class App extends Component {
 
   warn = (msg) => {
     /* eslint-disable no-console */
-    console.log("UbiTok App warning:", msg);
+    console.log("KIWI Exchange Warning:", msg);
     /* eslint-enable no-console */
   }
 
@@ -832,11 +833,11 @@ class App extends Component {
   // TODO - don't like this, rework nav to just use plain old links
   handleTopNavSelect = (key) => {
     if (key === "Home") {
-      window.open("https://ubitok.io/", "_blank");
+      window.open("https://exchange.thekiwi.io/", "_blank");
     } else if (key === "ViewBooks") {
-      window.open("https://ubitok.io/products/", "_blank");
+      window.open("https://exchange.thekiwi.io/products/", "_blank");
     } else if (key === "Help") {
-      window.open("https://ubitok.io/help/", "_blank");
+      window.open("https://exchange.thekiwi.io/help/", "_blank");
     } else if (key === "DemoHelp") {
       this.setState((prevState, props) => {
         return {
@@ -925,7 +926,7 @@ class App extends Component {
           { (this.state.pairInfo.liveness === "TEST") ? (
             <img src={TestLogo} className="App-logo" alt="TEST" />
           ) : undefined }
-          <img src={UbiLogo} className="App-logo" alt="KIWI Exchnage" />- the official exchange for trading the KIWI token
+          <img src={KiwiLogo} className="App-logo" alt="KIWI Exchange" />- the official exchange for trading the KIWI token
         </div>
         <Grid>
           <Row>
@@ -1013,6 +1014,7 @@ class App extends Component {
                       </ButtonToolbar>
                     </td>
                   </tr>
+
                   <tr>
                     <td>{this.state.pairInfo.cntr.symbol}</td>
                     <OverlayTrigger placement="top" overlay={this.makeSimpleToolTip("Your " + this.state.pairInfo.cntr.name + " funds held in the contract. Can be used to buy " + this.state.pairInfo.base.symbol + " or withdrawn.")}>
@@ -1035,6 +1037,9 @@ class App extends Component {
                       </ButtonToolbar>
                     </td>
                   </tr>
+
+                  {/* TODO - SHOW KIWI BALANCE ALWAYS */}
+                  {/*
                   <tr>
                     <td>{this.state.pairInfo.rwrd.symbol}</td>
                     <OverlayTrigger placement="top" overlay={this.makeSimpleToolTip("Your " + this.state.pairInfo.rwrd.name + " funds held in the contract. Can be used to pay fees or withdrawn.")}>
@@ -1057,6 +1062,9 @@ class App extends Component {
                       </ButtonToolbar>
                     </td>
                   </tr>
+                  */}
+
+
                   { (this.state.paymentHistory.length > 0) ? (
                     <tr>
                       <th colSpan="4">History</th>
@@ -1164,7 +1172,7 @@ class App extends Component {
                       </Button>
                     </p>
                     <p>
-                        Depositing/Withdrawing UBI Reward Tokens is not yet supported.
+                        Depositing/Withdrawing KIWI Tokens is not yet available.
                     </p>
                   </Tab.Pane>
                   <Tab.Pane eventKey="withdrawRwrd">
@@ -1175,7 +1183,7 @@ class App extends Component {
                       </Button>
                     </p>
                     <p>
-                        Depositing/Withdrawing UBI Reward Tokens is not yet supported.
+                        Depositing/Withdrawing KIWI Tokens is not yet available.
                     </p>
                   </Tab.Pane>
                 </Tab.Content>
@@ -1194,10 +1202,11 @@ class App extends Component {
 
             </Col>
             <Col md={8}>
+              {/* ADAM - commented out
               <Row>
                 <Col md={12}>
                   <h5>
-                    Order Book
+                    Current Sell Orders
                     {this.state.book.isComplete ? (
                       <Button bsSize="xsmall" bsStyle="info" onClick={() => this.handleClickReloadOrderBook()} style={{marginLeft: "3px"}}>
                         <Glyphicon glyph="refresh" title="reload order book" />
@@ -1208,8 +1217,10 @@ class App extends Component {
                   </h5>
                 </Col>
               </Row>
+              */}
               <Row>
                 <Col md={6}>
+                  <h5>Current Sell Orders</h5>
                   <div className="capped-table-small">
                     <Table striped bordered condensed hover>
                       <thead>
@@ -1237,6 +1248,7 @@ class App extends Component {
                   </div>
                 </Col>
                 <Col md={6}>
+                  <h5>Current Buy Orders</h5>
                   <div className="capped-table-small">
                     <Table striped bordered condensed hover>
                       <thead>

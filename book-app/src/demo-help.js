@@ -9,14 +9,14 @@ class DemoHelp extends React.Component {
     return (
       <Modal show={this.props.show} onHide={this.props.onHide}>
         <Modal.Header closeButton>
-          <Modal.Title>Welcome to the UbiTok.io Demo!</Modal.Title>
+          <Modal.Title>Welcome to the KIWI Exchange Demo!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>
-            This is a <i>simulation</i> of the UbiTok.io exchange - it's all just happening in your browser.
+            This is a <i>simulation</i> of the KIWI Exchange - it's all just happening in your browser.
           </p>
           <p>
-            We've built this demo page so you can try out UbiTok.io without needing to connect to the real Ethereum network or spend any money.
+            We've built this demo page so you can try out KIWI Exchange without needing to connect to the real Ethereum network or spend any money.
           </p>
           <p>
             You've got some (virtual) DEMO tokens and demo ether - see the "Balances and Payments" section. (If you run out, you can always just refresh the page).

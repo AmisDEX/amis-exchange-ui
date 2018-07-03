@@ -12,7 +12,7 @@ Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and
 
 To get started, check out <http://getbootstrap.com>!
 
-This is a customised version of Bootstrap for [UbiTok.io](https://ubitok.io/).
+This is a customised version of Bootstrap for [KIWI Exchange](https://exchange.thekiwi.io).
 
 ## Table of contents
 

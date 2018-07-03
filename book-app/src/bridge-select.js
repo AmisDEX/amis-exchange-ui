@@ -72,7 +72,7 @@ class BridgeSelect extends React.Component {
     return (
       <Modal show={this.props.show} onHide={this.handleDone}>
         <Modal.Header closeButton>
-          <Modal.Title>How should UbiTok.io send Ethereum transactions?</Modal.Title>
+          <Modal.Title>How should we send Ethereum transactions?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Nav bsStyle="pills" stacked activeKey={this.state.selectedKey} onSelect={this.handleSelect}>
