@@ -1,5 +1,5 @@
-# kiwiexchange-ui
-KIWI Exchange User Interface
+# amis-exchange-ui
+AMIS Exchange User Interface
 
 ## Making changes to theme
 install less ` npm install -g less`
