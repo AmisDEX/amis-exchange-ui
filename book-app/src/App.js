@@ -13,7 +13,7 @@ import { NotificationContainer } from "react-notifications";
 
 import Spinner from "react-spinkit";
 //import UbiLogo from "./ubitok-logo.svg";
-import KiwiLogo from "./kiwi-logo.png";
+import AmisLogo from "./amis-logo.png";
 import DemoLogo from "./demo-logo.svg";
 import TestLogo from "./test-logo.svg";
 
@@ -926,7 +926,7 @@ class App extends Component {
           { (this.state.pairInfo.liveness === "TEST") ? (
             <img src={TestLogo} className="App-logo" alt="TEST" />
           ) : undefined }
-          <img src={KiwiLogo} className="App-logo" alt="AMIS Exchange" />- the official exchange for trading the AMIS token
+          <img src={AmisLogo} className="App-logo" alt="AMIS Exchange" />- the official exchange for trading the AMIS token
         </div>
         <Grid>
           <Row>
