@@ -248,7 +248,7 @@ class App extends Component {
     this.bridge.subscribeBalance(this.handleBalanceUpdate);
     window.setInterval(this.updateClock, 1000);
     window.setInterval(this.purgeExcessData, 30000);
-    window.document.title = "KIWI Exchange - " + this.state.pairInfo.symbol;
+    window.document.title = "AMIS Exchange - " + this.state.pairInfo.symbol;
   }
 
   panic = (msg) => {
@@ -257,7 +257,7 @@ class App extends Component {
 
   warn = (msg) => {
     /* eslint-disable no-console */
-    console.log("KIWI Exchange Warning:", msg);
+    console.log("AMIS Exchange Warning:", msg);
     /* eslint-enable no-console */
   }
 
@@ -833,11 +833,11 @@ class App extends Component {
   // TODO - don't like this, rework nav to just use plain old links
   handleTopNavSelect = (key) => {
     if (key === "Home") {
-      window.open("https://exchange.thekiwi.io/", "_blank");
+      window.open("https://amisdex.github.io/amis-exchange-www/", "_blank");
     } else if (key === "ViewBooks") {
-      window.open("https://exchange.thekiwi.io/products/", "_blank");
+      window.open("https://amisdex.github.io/amis-exchange-www/products/", "_blank");
     } else if (key === "Help") {
-      window.open("https://exchange.thekiwi.io/help/", "_blank");
+      window.open("https://amisdex.github.io/help/", "_blank");
     } else if (key === "DemoHelp") {
       this.setState((prevState, props) => {
         return {
@@ -926,7 +926,7 @@ class App extends Component {
           { (this.state.pairInfo.liveness === "TEST") ? (
             <img src={TestLogo} className="App-logo" alt="TEST" />
           ) : undefined }
-          <img src={KiwiLogo} className="App-logo" alt="KIWI Exchange" />- the official exchange for trading the KIWI token
+          <img src={KiwiLogo} className="App-logo" alt="AMIS Exchange" />- the official exchange for trading the AMIS token
         </div>
         <Grid>
           <Row>
@@ -1038,7 +1038,7 @@ class App extends Component {
                     </td>
                   </tr>
 
-                  {/* TODO - SHOW KIWI BALANCE ALWAYS */}
+                  {/* TODO - SHOW AMIS BALANCE ALWAYS */}
                   {/*
                   <tr>
                     <td>{this.state.pairInfo.rwrd.symbol}</td>
@@ -1172,7 +1172,7 @@ class App extends Component {
                       </Button>
                     </p>
                     <p>
-                        Depositing/Withdrawing KIWI Tokens is not yet available.
+                        Depositing/Withdrawing AMIS Tokens is not yet available.
                     </p>
                   </Tab.Pane>
                   <Tab.Pane eventKey="withdrawRwrd">
@@ -1183,7 +1183,7 @@ class App extends Component {
                       </Button>
                     </p>
                     <p>
-                        Depositing/Withdrawing KIWI Tokens is not yet available.
+                        Depositing/Withdrawing AMIS Tokens is not yet available.
                     </p>
                   </Tab.Pane>
                 </Tab.Content>
