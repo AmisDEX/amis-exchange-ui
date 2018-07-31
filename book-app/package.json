@@ -1,11 +1,11 @@
 {
   "name": "book-app",
   "version": "0.1.0",
-  "author": "Liberation Online",
+  "author": "Amisolution",
   "license": "Proprietary",
   "private": true,
-  "description": "Web UX for KIWI Exchange book contract",
-  "homepage": "https://exchange.thekiwi.io/exchange/",
+  "description": "Web UX for AMIS Exchange book contract",
+  "homepage": "https://amisdex.github.io/amis-exchange-www/",
   "dependencies": {
     "copy-to-clipboard": "^3.0.8",
     "eslint": "^4.4.1",
@@ -21,7 +21,7 @@
     "react-notifications": "^1.4.3",
     "react-spinkit": "^3.0.0",
     "ubi-bootstrap": "file:../ubi-bootstrap",
-    "ubitok-jslib": "file:../../kiwiexchange-jslib",
+    "ubitok-jslib": "file:../../amis-exchange-jslib",
     "web3": "^0.20.1",
     "web3-provider-engine": "^13.2.9"
   },
