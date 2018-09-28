@@ -2,7 +2,7 @@
 
 AMIS Exchange User Interface
 - [Github.com](https://github.com/AmisDEX/amis-exchange-ui)
-- [Github.io](https://github.com/AmisDEX/amis-exchange-ui/tree/dev/book-app/public)
+- [Github.io](https://amisdex.github.io/amis-exchange-ui/tree/dev/book-app/public)
 
 
 ## Making changes to theme
